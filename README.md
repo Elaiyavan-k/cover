@@ -1,40 +1,285 @@
 # Ex.06 Book Front Cover Page Design
-## Date:
-
-## AIM:
+# Date: 28/04/2025
+# Name: Elaiyavan.K
+# AIM:
 To design a book front cover page using HTML and CSS.
 
-## DESIGN STEPS:
-
-### Step 1:
+# DESIGN STEPS:
+## Step 1:
 Create a Django Admin project.
 
-### Step 2:
+## Step 2:
 Create an app in the Django interface.
 
-### Step 3:
+## Step 3:
 Create a folder named 'static' in the app folder.
 
-### Step 4:
+## Step 4:
 Create a new HTML file in the static folder.
 
-### Step 5:
+## Step 5:
 Write the HTML code with relevant CSS properties.
 
-### Step 6:
+## Step 6:
 Choose the appropriate style and color scheme.
 
-### Step 7:
+## Step 7:
 Insert the images in their appropriate places.
 
-### Step 8:
+## Step 8:
 Publish the website in the LocalHost.
 
-## PROGRAM:
+# PROGRAM:
+### views.py
+```
+from django.shortcuts import render
+def book(request):
+    return render(request,'web.html')
+```
+### settings.py
+```
+
+from pathlib import Path
+import os
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-## OUTPUT:
+
+SECRET_KEY = 'django-insecure-u-$!dy9r@8w6c2=+)q#7zs#t*=ktf0-ri49c!$%6%8oe%nel%+'
 
 
-## RESULT:
+DEBUG = True
+
+ALLOWED_HOSTS = []
+
+
+
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'app',
+]
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+ROOT_URLCONF = 'image.urls'
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+WSGI_APPLICATION = 'image.wsgi.application'
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+
+
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+
+
+
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'UTC'
+
+USE_I18N = True
+
+USE_TZ = True
+
+
+
+STATIC_URL = 'static/'
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+```
+### urls.py
+```
+from django.contrib import admin
+from django.urls import path
+from app import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('book',views.book),
+]
+
+```
+### web.html
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+    font-family: sans-serif;
+    line-height: 1;
+    color: rgb(255, 255, 255);
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+
+.expert-insight {
+    margin: 5px 50px;
+}
+
+
+.custom-hr {
+    width: 30%;
+    margin: 0;
+    border: none;
+    border-top: 3px solid rgb(17, 11, 8);
+    margin-left: 0;
+}
+
+.heading {
+    margin: 10px 50px;
+    font-size: 4rem;
+}
+
+.sub-heading {
+    margin: 10px 50px;
+    font-size: 1.4rem;
+    font-weight: 550;
+    line-height: 1;
+}
+
+
+.spiral-image {
+    
+    width: 600px;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.editon-image-div {
+    margin: 10px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.third-edition {
+    font-size: x-large;
+    font-weight: 800;
+    color: rgb(115, 234, 255);
+}
+
+.ben-image {
+    width: 250px;
+    
+}
+
+.custom-full-hr {
+    border: 1px solid rgb(24, 194, 168);
+}
+
+.author-div {
+    margin: 10px 50px;
+}
+
+.author-div {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.ELAIYAVAN K{
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.packt {
+    font-size: 2rem;
+    font-weight: 515;
+    text-decoration: underline;
+}
+.one{
+    width: 600px;
+    height: 800px;
+    background-color:#1a3e8b;
+}
+    </style>
+</head>
+{% load static %}
+<body><div class="one">
+    <p class="expert-insight">EXPERT INSIGHT</p>
+    <hr class="custom-hr">
+    <h1 class="heading">Responsive Web <br> Design with <br> HTML5 and CSS</h1>
+    <p class="sub-heading">Develop future-proof responsive websites <br> using the latest HTML5 and CSS3 techniques</p>
+    <div class="editon-image-div">
+        <p class="third-edition">FOURTH EDITION</p>
+    </div>
+    <hr class="custom-full-hr">
+    <div class="author-div">
+        <p class="Elaiyavan">ELLAIYAVAN K</p>
+        <p class="packt">$111</p>
+    </div>
+</div>
+    
+</body>
+```
+# OUTPUT:
+![image](https://github.com/user-attachments/assets/9ddd93d5-6753-4244-96ed-ef3e770befbf)
+
+
+# RESULT:
 The program for designing book front cover page using HTML and CSS is completed successfully.
